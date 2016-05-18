@@ -1,10 +1,13 @@
 import $ from "jquery";
 
 // Get Models
-import { Employee} from './moduels/employee';
+import { Employee} from './models/employee';
 
-import { Contacts} from './moduels/contacts';
+import { Views} from './models/views';
 import { AppController} from './controllers/appController';
+
+const url = 'https://secret-forest-21470.herokuapp.com/collections/abcdefghijklijklmnopqrstuvwxyz/';
+
 
 // Store Elements
 let employeeForm = $('.employeeForm'); //<form>

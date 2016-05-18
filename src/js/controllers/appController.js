@@ -1,7 +1,7 @@
 import $ from "jquery";
 import _ from 'lodash';
 
-import {Contacts} from '../moduels/contacts';
+import {Views} from '../model/views';
 
 export class AppController {
 
