@@ -3,13 +3,19 @@ import _ from 'lodash';
 
 import {Views} from '../model/views';
 
+// Make Controller Class
 export class AppController {
 
-  constructor (formElem, taskElem, instance) {
-    this.button = formElem;
-    this.taskArea = taskElem;
-    this.todoListInstance = instance;
+  constructor (contactForm, contactList) {
+    this.contactForm = contactForm;
+    this. contactList = contactList;
   }
+
+  // constructor (formElem, taskElem, instance) {
+  //   this.button = formElem;
+  //   this.taskArea = taskElem;
+  //   this.todoListInstance = instance;
+  // }
 
   init() {
     this.formSubmit();
@@ -19,9 +25,8 @@ export class AppController {
   //initialize the form
   formSubmit() {
     this.button.on('submit', (event) => {
-      //     event.preventDefault();
+      event.preventDefault();
       console.log(event);
-
       // $('#employeeForm').on('submit', (event) => {
       //   // prevent browser default
       //   event.preventDefault();
@@ -48,10 +53,8 @@ export class AppController {
 
       // add the remove class here
 
-
       // Toggle the completed class on that li
       // liClicked.toggleClass('completed');
-
 
       // Find the item in the array by it's ID
       let specTask = _.find(this.todoListInstance.tasks, { id: Number(liID)});

@@ -1,3 +1,5 @@
+@import "bulma";
+
 $brown: #49240A;
 $background: #FFD6A8;
 
@@ -8,7 +10,7 @@ body {
 }
 
 .container {
-  width: 90%;
+  width: 50%;
   margin: 0 auto;
 }
 
@@ -34,4 +36,8 @@ button {
 
 img {
   border-radius: 50%;
+}
+.box {
+  margin: 0 auto;
+  width: 80%;
 }
