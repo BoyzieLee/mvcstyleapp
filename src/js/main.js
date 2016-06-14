@@ -15,9 +15,9 @@ form.on('submit', function (event){
   event.preventDefault();
 
   let employeeForm  = form.find('.name').val(); //<form>
-  let nameInput     = form.find('.nameInput').val(); //<input>
-  let ageInput      = form.find('.ageInput').val(); //<input>
-  let locationInput = form.find('.locationInput').val(); //<input>
+  let name     = form.find('.name').val(); //<input>
+  let age      = form.find('.age').val(); //<input>
+  let location = form.find('.location').val(); //<input>
 
   let employee = {
     name: name,
@@ -73,10 +73,9 @@ function employeeTemplate(employee){
       </article>
     </div>
   `;
-
 }
 
-
+getEmployees();
 
 
 // Initiate our App Controller
