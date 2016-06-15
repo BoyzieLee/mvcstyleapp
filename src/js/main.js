@@ -9,15 +9,21 @@ import { AppController} from './controllers/appController';
 const url = 'https://secret-forest-21470.herokuapp.com/collections/abcdefghijklijklmnopqrstuvwxyz/';
 
 let form = $('.employeeForm');
-let employee = $('.employees')
+let employeeArea = $('.employees')
 
 form.on('submit', function (event){
   event.preventDefault();
 
-  let employeeForm  = form.find('.name').val(); //<form>
-  let name     = form.find('.name').val(); //<input>
-  let age      = form.find('.age').val(); //<input>
-  let location = form.find('.location').val(); //<input>
+  // let employeeForm  = form.find('.name').val(); //<form>
+  // let name     = form.find('.name').val(); //<input>
+  // let age      = form.find('.age').val(); //<input>
+  // let location = form.find('.location').val(); //<input>
+
+  // Store Elements
+  let employeeForm  = $('.employeeForm'); //<form>
+  let name     = $('.name'); //<input>
+  let number   = $('.number'); //<input>
+  let location = $('.location'); //<input>
 
   let employee = {
     name: name,
@@ -25,28 +31,23 @@ form.on('submit', function (event){
     location: location,
   };
 });
-// Store Elements
-// let employeeForm  = $('.employeeForm'); //<form>
-// let nameInput     = $('.nameInput'); //<input>
-// let numberInput   = $('.numberInput'); //<input>
-// let locationInput = $('.locationInput'); //<input>
 // //  Import contact list form Employee;
 // let contactList = new Employee('Contact List');
 
 // Send data to the server
-$.post(url, employee).then(function(res){
-  console.log(employee);
+$.post(url, employeeArea).then(function(res){
+  console.log(employeeArea);
   let employeeHTML = employeeTemplate(res);
-  employee.prepend(employeeHTML);
+  employeeArea.prepend(employeeHTML);
 });
 
 
 function getEmployees() {
   // get employees and add to page
   $.getJSON(url).then(function(res){
-    res.formEach(function (person){
-      let employeeHTML = employeeTemplate(employee);
-      employee.append(employeeHTML);
+    res.forEach(function (person){
+      let employeeHTML = employeeTemplate(employeeArea);
+      employeeArea.append(employeeHTML);
     });
   });
 }
