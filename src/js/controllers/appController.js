@@ -34,7 +34,7 @@ export class AppController {
       // let input = this.button.find('input');
       // this.addTaskToCollection(input.val());
 
-      let data = {name:$('.nameInput') .val(), numberInput: $('.number') .val(), location: $('.locationInput') .val(),}
+      let data = {name:$('.name') .val(), phone: $('.phone') .val(), location: $('.location') .val(),}
       data.val(''); //this clears the input
       // console.log(input.val());
     });

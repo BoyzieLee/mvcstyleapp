@@ -1,11 +1,11 @@
 export class Employee {
 
-  constructor (name, location, age, picture){
+  constructor (name, location, phone, picture){
       this.name = name;
-      this.age = age;
+      this.phone = phone;
       this.location = location;
       this.picture = picture;
-      // this.title  = title;
+      // this.title = title;
       // this.tasks = [];
   }
 

@@ -1,10 +1,9 @@
 import $ from "jquery";
 
 // Get Models
-import { Employee} from './model/employee';
-
-import { Views} from './model/views';
-import { AppController} from './controllers/appController';
+import {Employee} from './model/employee';
+import {Views} from './model/views';
+import {AppController} from './controllers/appController';
 
 const url = 'https://secret-forest-21470.herokuapp.com/collections/abcdefghijklijklmnopqrstuvwxyz/';
 
@@ -14,33 +13,33 @@ let employeeArea = $('.employees')
 form.on('submit', function (event){
   event.preventDefault();
 
-  // let employeeForm  = form.find('.name').val(); //<form>
   // let name     = form.find('.name').val(); //<input>
-  // let age      = form.find('.age').val(); //<input>
-  // let location = form.find('.location').val(); //<input>
 
   // Store Elements
   let employeeForm  = $('.employeeForm'); //<form>
   let name     = $('.name'); //<input>
-  let number   = $('.number'); //<input>
+  let numberInput   = $('.numberInput'); //<input>
   let location = $('.location'); //<input>
 
   let employee = {
-    name: name,
-    age: age,
-    location: location,
+    name: name.val(),
+    number: numberInput.val(),
+    location: location.val(),
   };
+
+  console.log(employee);
 });
-// //  Import contact list form Employee;
-// let contactList = new Employee('Contact List');
+
+//  Import contact list form Employee;
+let contactList = new Employee('Contact List');
 
 // Send data to the server
 $.post(url, employeeArea).then(function(res){
+  console.log(res);
   console.log(employeeArea);
   let employeeHTML = employeeTemplate(res);
   employeeArea.prepend(employeeHTML);
 });
-
 
 function getEmployees() {
   // get employees and add to page
@@ -65,7 +64,7 @@ function employeeTemplate(employee){
           <div class="content">
             <p>
               <strong>${employee.name}</strong>
-              <small>${employee.age}</small>
+              <small>${employee.phone}</small>
               <br>
               They are from - ${employee.location}
              </p>
@@ -79,7 +78,8 @@ function employeeTemplate(employee){
 getEmployees();
 
 
-// Initiate our App Controller
-// let app = new AppController(employeeForm, nameInput, numberInput, locationInput, contactList);
-
+// // Initiate our App Controller
+// let app = new AppController(employeeForm, name, numberInput, location, contactList);
+//
+// // This kicks off the app
 // app.init();
