@@ -5,15 +5,13 @@ import {Employee} from './model/employee';
 import {Views} from './model/views';
 import {AppController} from './controllers/appController';
 
-const url = 'https://secret-forest-21470.herokuapp.com/collections/abcdefghijklijklmnopqrstuvwxyz/';
+const url = 'https://secret-forest-21470.herokuapp.com/collections/abcdefghijklijklmnopqrstuvwxy/';
 
 let form = $('.employeeForm');
 let employeeArea = $('.employees')
 
 form.on('submit', function (event){
   event.preventDefault();
-
-  // let name     = form.find('.name').val(); //<input>
 
   // Store Elements
   let employeeForm  = $('.employeeForm'); //<form>
@@ -26,24 +24,26 @@ form.on('submit', function (event){
     number: numberInput.val(),
     location: location.val(),
   };
-
   console.log(employee);
+
+  // let contactList = new Employee('Contact List');
+
+  // this Send data to Heroku
+  $.post(url, employee).then(function(res){
+    console.log(res);
+
+    // This post the perons to the bottom of page
+    let employeeHTML = employeeTemplate(res);
+    employeeArea.prepend(employeeHTML);
+  });
 });
 
 //  Import contact list form Employee;
-let contactList = new Employee('Contact List');
-
-// Send data to the server
-$.post(url, employeeArea).then(function(res){
-  console.log(res);
-  console.log(employeeArea);
-  let employeeHTML = employeeTemplate(res);
-  employeeArea.prepend(employeeHTML);
-});
 
 function getEmployees() {
   // get employees and add to page
   $.getJSON(url).then(function(res){
+    // console.log(res);
     res.forEach(function (person){
       let employeeHTML = employeeTemplate(employeeArea);
       employeeArea.append(employeeHTML);
